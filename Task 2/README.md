@@ -51,7 +51,6 @@ Implemented and compared three regression models:
 1. **Age_group**
 2. **Active member**
 3. **Products number**
-4.
 
 #### 📈 Data Insights
 - Charges follow log-normal distribution requiring transformation
