@@ -16,7 +16,6 @@ The primary goal was to develop a predictive model that can:
 - Cleaned and prepared financial dataset containing applicant information
 - Handled missing values and performed feature engineering
 - Conducted exploratory data analysis to understand patterns
-- Addressed class imbalance using appropriate techniques
 
 ### Feature Analysis
 Key features analyzed included:
