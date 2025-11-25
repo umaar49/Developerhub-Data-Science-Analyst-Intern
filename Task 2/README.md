@@ -1,101 +1,93 @@
-# Insurance Charges Prediction Analysis
+# Bank Customer Churn Prediction Analysis
 
 ## 📋 Project Overview
-This project analyzes health insurance charges data to understand the key factors driving medical costs and build predictive models for accurate charge estimation. The analysis provides valuable insights for both insurance companies and policyholders.
+This project focuses on predicting bank customer churn using machine learning techniques. By analyzing customer demographics, account information, and transaction patterns, we build models to identify customers likely to leave the bank, enabling proactive retention strategies.
 
 ## 🎯 Task Objective
-The main objectives of this project were:
-- Identify key factors influencing health insurance charges
-- Build accurate predictive models for insurance cost estimation
-- Handle data challenges like skewed distributions and outliers
-- Provide actionable insights for insurance pricing strategies
+The primary objectives of this project were:
+- Predict which customers are likely to churn (leave the bank)
+- Identify key factors driving customer churn
+- Handle severe class imbalance in the dataset
+- Build multiple classification models and select the best performer
+- Provide actionable insights for customer retention strategies
 
 ## 🛠️ My Approach
 
-### Data Understanding & Exploration
-- Analyzed dataset with 1,338 records and 7 features
-- Key features: age, sex, BMI, children, smoker status, region, insurance charges
-- Initial exploration revealed right-skewed distribution of charges
+### Data Understanding & Initial Analysis
+- **Dataset**: 10,000 customer records with 14 features
+- **Key Features**: Credit score, geography, gender, age, balance, products, card type
+- **Critical Finding**: Severe class imbalance (20% churn rate) requiring specialized handling
 
-### Data Preprocessing
-- **Outlier Handling**: Applied IQR method to cap extreme values
-- **Feature Engineering**: Created age groups and categorical transformations
-- **Target Transformation**: Used Box-Cox transformation to normalize charges distribution
-- **Visual Analysis**: Comprehensive EDA with histograms, box plots, and scatter plots
+### Data Preprocessing & Feature Engineering
+- **Missing Values**: Handled missing data points appropriately
+- **Feature Encoding**: Converted categorical variables (country,gender,age_group,tenure_group)
+- **Feature Scaling**: Applied standardization to numerical features
+- **Class Imbalance**: Implemented SMOTE (Synthetic Minority Over-sampling Technique) to balance the dataset
 
-### Feature Analysis
-Conducted detailed analysis of relationships:
-- **Smoker Status**: Most significant factor affecting charges
-- **Age**: Strong positive correlation with insurance costs
-- **BMI**: Moderate impact on charges
-- **Region & Children**: Secondary influencing factors
+### Exploratory Data Analysis
+Conducted comprehensive analysis to understand churn patterns:
+- **Demographic Analysis**: Age, geography, and gender distributions
+- **Financial Analysis**: Balance, credit score, and salary impacts
+- **Correlation Analysis**: Identified relationships between features and churn
 
-### Model Development
-Implemented and compared three regression models:
-- **Random Forest Regressor**
-- **XGBoost Regressor** 
-- **Linear Regression**
+### Model Development Strategy
+Implemented and compared five classification algorithms:
+- **Random Forest Classifier**
+- **XGBoost Classifier**
+- **Logistic Regression**
+- **Support Vector Machine (SVM)**
+- **K-Nearest Neighbors (KNN)**
 
 ## 📊 Results and Insights
 
 ### Model Performance Comparison
-| Model | RMSE | MAE | Performance |
-|-------|------|-----|-------------|
-| Random Forest | 0.6279 | 0.3906 | 🏆 **Best** |
-| Linear Regression | 0.6676 | 0.4897 | Good |
-| XGBoost | 0.6950 | 0.4597 | Good |
+| Model | ROC-AUC Score | 
+|-------|---------------|
+| Random Forest | 0.8268 | 
+| XGBoost | 0.7993 | 
+| SVM | 0.5767 | 
+| Logistic Regression | 0.5687 | 
+| KNN | 0.5189 | 
 
-### Key Findings
+### Key Churn Drivers Identified
 
-#### 🔥 Most Important Factors
-1. **Age_group**
+#### 🔍 Top Factors Influencing Customer Churn:
+1. **Age group young**
 2. **Active member**
 3. **Products number**
+4. **Country france**
+5. **Gender male**
 
-#### 📈 Data Insights
-- Charges follow log-normal distribution requiring transformation
-- Clear segmentation between smoker and non-smoker charges
-- Linear relationships observed between age/BMI and charges
-- Regional variations exist but are less significant
 
-### Business Impact
+#### 💼 Business Impact:
+- **Proactive Retention**: Identify at-risk customers before they leave
+- **Targeted Marketing**: Develop personalized retention offers
+- **Product Strategy**: Encourage multi-product relationships to reduce churn
+- **Resource Optimization**: Focus retention efforts on high-probability segments
 
-#### For Insurance Companies:
-- **Accurate Pricing**: 98%+ accurate cost predictions enable better risk assessment
-- **Risk Segmentation**: Clear identification of high-risk profiles (smokers, high BMI)
-- **Product Development**: Data-driven insights for tailored insurance products
+### Technical Achievements
 
-#### For Consumers:
-- **Cost Transparency**: Understand what factors drive premium costs
-- **Informed Decisions**: Make lifestyle choices knowing their insurance impact
-- **Financial Planning**: Better anticipate insurance expenses
+#### 🎯 Model Performance:
+- **Random Forest** achieved 82% ROC-AUC score
+- **Effective Imbalance Handling**: SMOTE significantly improved minority class prediction
+- **Feature Importance**: Clear identification of key churn predictors
+- **Model Robustness**: Consistent performance across different customer segments
 
-## 💡 Technical Implementation
+#### 📊 Validation Strategy:
+- Comprehensive train-test split validation
+- ROC-AUC as primary metric for imbalanced classification
+- Feature importance analysis for model interpretability
+- Multiple model comparison for optimal selection
 
-### Data Transformation Strategy
-- **Box-Cox Transformation**: Optimal for handling skewed charge distribution
-- **Feature Encoding**: Proper handling of categorical variables
-- **Correlation Analysis**: Identified multicollinearity and relationships
+## 💡 Conclusion
 
-### Model Selection Rationale
-**Random Forest** was chosen as the final model because:
-- Best performance on both RMSE (0.6279) and MAE (0.3906)
-- Handles non-linear relationships effectively
-- Robust to outliers and feature correlations
-- Provides feature importance rankings
+The Bank Customer Churn Prediction project successfully demonstrates the power of machine learning in customer retention strategies. By achieving 82% predictive accuracy with Random Forest, the model provides banks with a powerful tool to:
 
-### Validation Approach
-- Train-test split for model evaluation
-- Multiple metrics (RMSE, MAE) for comprehensive assessment
-- Cross-validation techniques for model stability
+- **Reduce Customer Acquisition Costs** by focusing on retention
+- **Improve Customer Satisfaction** through proactive engagement
+- **Optimize Marketing Resources** by targeting high-risk segments
+- **Enhance Product Development** based on churn driver insights
 
-## 🚀 Conclusion
+**The key takeaway**: Customer churn is highly predictable when analyzing the right combination of demographic, financial, and behavioral data. Banks that leverage these insights can significantly improve customer retention and overall business performance.
 
-The Insurance Charges Prediction project successfully demonstrates that machine learning can accurately predict health insurance costs while providing transparent insights into the key driving factors. The Random Forest model achieved excellent performance with minimal prediction errors, making it suitable for real-world insurance applications.
-
-**The most significant finding**: Smoking status alone can account for substantial differences in insurance premiums, providing clear motivation for lifestyle changes and helping insurance companies develop fair, data-driven pricing strategies.
-
-This project showcases how data science can create value for both businesses and consumers in the insurance industry.
-
----
-*Built with Python, Pandas, Scikit-learn, Random Forest, and comprehensive data analysis techniques*
+This project showcases how data science can transform customer relationship management in the banking sector, turning reactive problem-solving into proactive strategic advantage.
